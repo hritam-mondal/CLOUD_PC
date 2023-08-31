@@ -25,6 +25,7 @@ jobs:
         run: |
           sudo useradd -m myuser -s /bin/bash
           echo 'myuser:password' | sudo chpasswd
+          sudo usermod -aG sudo myuser
         shell: bash
 
       - name: Create SSH Tunnel
