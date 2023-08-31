@@ -21,5 +21,11 @@ jobs:
         env:
           NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
 
+      - name: Create SSH User
+        run: |
+          sudo useradd -m myuser -s /bin/bash
+          echo 'myuser:password' | sudo chpasswd
+        shell: bash
+
       - name: Create SSH Tunnel
         run: ./ngrok tcp 22
